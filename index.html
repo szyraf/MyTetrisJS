@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+    <html lang="pl-PL">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tetris</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <canvas id="tetrisCanvas"></canvas>
+        
+        <script src="tetris.js"></script>
+        <script src="srs.js"></script>
+        <script src="restart.js"></script>
+
+        <div class="prawa">
+            <h2>Settings</h2>
+            <br>
+            <label>
+                <a>Pause:</a>
+                <input type="checkbox" id="Pause" name="Pause">
+            </label>
+            <br><br>
+            <label>
+                <a>BlockSize:</a>
+                <input type="number" value="30" id="BlockSize" name="BlockSize" min="20" max="40" step="2">
+            </label>
+            <br><br>
+            <label>
+                <a>Speed:</a>
+                <input type="number" value="1" id="Speed" name="BlockSize" min="1" max="60" step="1">
+            </label>
+            <br><br>
+            <label>
+                <a>NotPutBlocks:</a>
+                <input type="checkbox" id="NotPutBlocks" name="NotPutBlocks">
+            </label>
+            <br><br>
+            <label>
+                <a>DAS:</a>
+                <input type="number" value="9" id="DAS" name="DAS" min="4" max="16" step="1">
+            </label>
+            <br><br>
+            <label>
+                <a>ARR:</a>
+                <input type="number" value="0" id="ARR" name="ARR" min="0" max="10" step="1">
+            </label>
+        </div>
+    </body>
+</html>
