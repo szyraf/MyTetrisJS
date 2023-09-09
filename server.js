@@ -31,13 +31,11 @@ let delay = 0
 let arrowsDirection = 0 // -1 = lewo
 //  1 = prawo
 //  0 = nigdzie
-let phase = 0 // 0 - żadna
-// 1 - 1 klatka
-// 2 - czekamy na DAS
-// 3 - ARR
+let phase = 'DAS' // DAS ARR
 
 //---FRAME---
 function frame() {
+  console.time('frame')
   //Główna funkcja
   //SETUP
   setup()
@@ -81,6 +79,8 @@ function frame() {
 
   //RESTART
   checkRestart()
+
+  console.timeEnd('frame')
 }
 
 //---MOVES---
@@ -127,47 +127,53 @@ function moveLeftRight() {
   if (isRight == true) {
     if (arrowsDirection != 1) {
       moveRight()
-      phase = 2
-    } else {
-      delay++
-      if (phase == 2) {
-        if (delay >= DAS) {
+      phase = 'DAS'
+    }
+    for (let i = 0; i < 50; i++) {
+      if (phase === 'DAS') {
+        if (delay >= DAS * 50) {
           moveRight()
-          phase = 3
+          phase = 'ARR'
           delay = 0
         }
-      } else if (phase == 3) {
-        if (delay >= ARR) {
+      }
+      if (phase === 'ARR') {
+        if (delay >= ARR * 50) {
           moveRight()
           delay = 0
         }
       }
+
+      delay++
     }
     arrowsDirection = 1
   } else if (isLeft == true) {
     if (arrowsDirection != -1) {
       moveLeft()
-      phase = 2
-    } else {
-      delay++
-      if (phase == 2) {
-        if (delay >= DAS) {
+      phase = 'DAS'
+    }
+    for (let i = 0; i < 50; i++) {
+      if (phase == 'DAS') {
+        if (delay >= DAS * 50) {
           moveLeft()
-          phase = 3
+          phase = 'ARR'
           delay = 0
         }
-      } else if (phase == 3) {
-        if (delay >= ARR) {
+      }
+      if (phase == 'ARR') {
+        if (delay >= ARR * 50) {
           moveLeft()
           delay = 0
         }
       }
+
+      delay++
     }
     arrowsDirection = -1
   } else {
     delay = 0
     arrowsDirection = 0
-    phase = 0
+    phase = 'DAS'
   }
 }
 
