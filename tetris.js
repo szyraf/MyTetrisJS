@@ -230,8 +230,8 @@ let holdTetromino = -1;
 let isHold = true;
 
 //---MOVES---
-let DAS = 9; // 150ms
-let ARR = 0; // 32ms
+let DAS = 7.5; // 125ms
+let ARR = 0; // 0ms
 let delay = 0;
 let arrowsDirection = 0; // -1 = lewo
                          //  1 = prawo
