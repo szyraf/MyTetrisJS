@@ -26,7 +26,7 @@ function restart() {
   //LOCK DELAY
   lockDelay = 0
   counterOflockDelay = 0
-  transparency = 1
+  currentTetrominoTransparency = 1
 
   //KEYS
   isLeft = false

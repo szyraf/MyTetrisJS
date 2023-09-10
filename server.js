@@ -13,7 +13,7 @@ let notPutBlocks = false
 //---LOCK DELAY---
 let lockDelay = 0
 let counterOflockDelay = 0
-let transparency = 1
+let currentTetrominoTransparency = 1
 
 let dropDelay = 0
 let hardDropDelay = true
@@ -56,14 +56,14 @@ function frame() {
       if (checkXY(0, 1, tetrominoRotation) == false) {
         fallCounter = 0
         lockDelay++
-        transparency -= 1 / 30.0
+        currentTetrominoTransparency -= 1 / 30.0
         if (lockDelay >= 30 || counterOflockDelay === 15) {
           lockDelay = 0
           oneDown(false)
         }
       } else {
         lockDelay = 0
-        transparency = 1
+        currentTetrominoTransparency = 1
         fallCounter++
         if (fallCounter >= 60 / Speed) {
           // 60fps
@@ -264,11 +264,10 @@ function checkXY(X, Y, futureRotation) {
 
 //---LOCK DELAY---
 function clearLockDelay() {
-  console.log('counterOflockDelay', counterOflockDelay)
   if (counterOflockDelay <= 14 && checkXY(0, 1, tetrominoRotation) === false) {
     lockDelay = 0
     counterOflockDelay++
-    transparency = 1
+    currentTetrominoTransparency = 1
   }
 }
 
