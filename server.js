@@ -62,6 +62,7 @@ function frame() {
           oneDown(false)
         }
       } else {
+        lockDelay = 0
         transparency = 1
         fallCounter++
         if (fallCounter >= 60 / Speed) {
