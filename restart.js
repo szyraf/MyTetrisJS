@@ -9,8 +9,6 @@ function restart() {
   isFalling = 0
   fallCounter = 0
 
-  speedSoftDrop = 1
-
   //BOARD
   board = Array.from(Array(10), () => new Array(30)) // x, y     (plansza)
   for (let y = 0; y < 30; y++) {
@@ -56,7 +54,7 @@ function restart() {
   //MOVES
   delay = 0
   arrowsDirection = 0
-  phase = 0
+  phase = 'DAS'
 
   //RANDOM 7
   random_random7()

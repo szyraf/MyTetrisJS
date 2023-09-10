@@ -10,6 +10,7 @@ function setup() {
   notPutBlocks = !document.querySelector('#NotPutBlocks').checked
   DAS = document.querySelector('#DAS').value
   ARR = document.querySelector('#ARR').value
+  SDF = document.querySelector('#SDF').value
 }
 
 //---ON LOAD---

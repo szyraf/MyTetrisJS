@@ -8,8 +8,6 @@ let Speed = 1
 let isFalling = 0
 let fallCounter = 0
 
-let speedSoftDrop = 1
-
 let notPutBlocks = false
 
 //---LOCK DELAY---
@@ -27,6 +25,7 @@ let isHold = true
 //---MOVES---
 let DAS = 7.5 // 125ms
 let ARR = 0 // 0ms
+let SDF = 40
 let delay = 0
 let arrowsDirection = 0 // -1 = lewo
 //  1 = prawo
@@ -35,7 +34,7 @@ let phase = 'DAS' // DAS ARR
 
 //---FRAME---
 function frame() {
-  console.time('frame')
+  // console.time('frame')
   //Główna funkcja
   //SETUP
   setup()
@@ -58,7 +57,7 @@ function frame() {
         fallCounter = 0
         lockDelay++
         transparency -= 1 / 30.0
-        if (lockDelay >= 30) {
+        if (lockDelay >= 30 || counterOflockDelay === 15) {
           lockDelay = 0
           oneDown(false)
         }
@@ -80,7 +79,7 @@ function frame() {
   //RESTART
   checkRestart()
 
-  console.timeEnd('frame')
+  // console.timeEnd('frame')
 }
 
 //---MOVES---
@@ -197,10 +196,12 @@ function moveLeft() {
 
 function softDrop() {
   if (isDown == true) {
-    dropDelay++
-    if (dropDelay >= speedSoftDrop) {
-      oneDown(true)
-      dropDelay = 0
+    for (let i = 0; i < 50; i++) {
+      dropDelay++
+      if (dropDelay >= (1 / SDF) * 50) {
+        oneDown(true)
+        dropDelay = 0
+      }
     }
   } else {
     dropDelay = 0
@@ -262,7 +263,8 @@ function checkXY(X, Y, futureRotation) {
 
 //---LOCK DELAY---
 function clearLockDelay() {
-  if (lockDelay > 0 && counterOflockDelay <= 15) {
+  console.log('counterOflockDelay', counterOflockDelay)
+  if (counterOflockDelay <= 14 && checkXY(0, 1, tetrominoRotation) === false) {
     lockDelay = 0
     counterOflockDelay++
     transparency = 1
