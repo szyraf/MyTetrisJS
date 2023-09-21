@@ -45,6 +45,7 @@ function numberToPiece(number) {
   return piece
 }
 
+let tetrominoColor = 'standard'
 const tetrominoColors = {
   standard: {
     I: '0, 255, 255',
@@ -76,8 +77,7 @@ const tetrominoColors = {
 }
 
 function getColor(piece, transparency) {
-  let option = 'standard'
-  let color = tetrominoColors[option][piece]
+  let color = tetrominoColors[tetrominoColor][piece]
   return `rgb(${color}, ${transparency})`
 }
 

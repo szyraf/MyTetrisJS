@@ -11,6 +11,8 @@ function setup() {
   DAS = document.querySelector('#DAS').value
   ARR = document.querySelector('#ARR').value
   SDF = document.querySelector('#SDF').value
+
+  tetrominoColor = document.querySelector('#colors').value
 }
 
 //---ON LOAD---
